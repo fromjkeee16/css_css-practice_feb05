@@ -1,0 +1,137 @@
+.people {
+    display: grid;
+    grid-template-columns: repeat($number-columns-small, $card-width-base);
+    
+    @include on-tablet {
+        grid-template-columns: repeat($number-columns-medium, $card-width-base);
+    }
+
+    @include on-desktop {
+        grid-template-columns: repeat($number-columns-big, $card-width-base);
+    }
+    
+    justify-content: center;
+    align-content: center;
+
+    gap: $row-gap $col-gap;
+    padding-inline: $page-padding-x;
+    padding-block: $page-padding-y;
+
+    &__person {
+        position: relative;
+    }
+}
+
+.person {
+    border-radius: $card-border-radius;
+    width: $card-width-base;
+
+    cursor: pointer;
+
+    &__photo {
+        position: relative;
+    }
+
+    &__image {
+        display:block;
+        width: $avatar-size;
+        height: $avatar-size;
+        border-radius: $avatar-border-radius;
+        transition: border-radius $animation-duration;
+    }
+
+    &__rank {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        right: $rank-badge-right-shift;
+        transform: translateY(-50%);
+
+
+        width: $rank-badge-size;
+        height: $rank-badge-size;
+        
+        border-radius: 50%;
+        background-color: #fff;
+        color: $rank-text-color;
+        font-weight: bold;
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        margin-top: 8px;
+
+        &-name {
+            font-weight: bold;
+            line-height: $main-line-height;
+        }
+
+        &-extra {
+            display: none;
+
+            line-height: $secondary-line-height;
+            color: $secondary-text-color;
+            font-size: $secondary-text-size;
+        }
+
+        &-sport {
+            &::after {
+                content: ", ";
+            }
+        }
+    
+        &-salary {
+            &::before {
+                content: "$";
+            }
+    
+            &::after {
+                content: "M"
+            }
+        }
+    }
+
+    /* already tried: 
+    * 1. default padding - element changes its sizes - shifts
+    * 2. absolute pseudoelement background - refuses to work bcs of z-index
+    */
+
+    /* to try: 
+    * 1. compensate padding with negative margin as in MUI grid v1
+    * 2. box-sizing borderbox and overflow visible
+    */
+
+    padding: $card-padding-hover;
+    margin: -($card-padding-hover);
+
+    transition: transform $animation-duration,
+    padding $animation-duration,
+    margin $animation-duration;
+    transform-origin: 50% center;
+    
+    &:hover {
+        position: absolute;
+        z-index: 1;
+
+        padding: $card-padding-hover-end;
+        margin: -($card-padding-hover-end);
+        
+        background-color: $card-background-color-hover;
+
+        transform: scale($scale-factor);
+
+        .person__details-extra {
+            display: block;
+        }
+
+        .person__image {
+            border-radius: $avatar-border-radius-hover;
+        }
+    }
+
+}
