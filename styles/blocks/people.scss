@@ -69,6 +69,7 @@
         &-name {
             font-weight: bold;
             line-height: $main-line-height;
+            margin-bottom: 9px;
         }
 
         &-extra {
@@ -97,7 +98,10 @@
     }
 
     padding: $card-padding-hover;
+    padding-bottom: 16px;
     margin: -($card-padding-hover);
+    margin-bottom: -16px;
+
 
     transition: transform $animation-duration,
     padding $animation-duration,
@@ -107,10 +111,6 @@
     &:hover {
         position: absolute;
         z-index: 1;
-
-        padding: $card-padding-hover-end;
-        margin: -($card-padding-hover-end);
-        
         background-color: $card-background-color-hover;
 
         transform: scale($scale-factor);
