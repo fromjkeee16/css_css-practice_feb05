@@ -97,16 +97,21 @@
         }
     }
 
-    transition: transform $animation-duration;
+    transition: transform $animation-duration ease-in-out;
     
     &:hover {
         position: absolute;
         z-index: 1;
 
-        padding: $card-padding-hover;
-        padding-bottom: 16px;
-        margin: -($card-padding-hover);
-        margin-bottom: -16px;
+        // padding: $card-padding-hover;
+        // padding-bottom: $card-padding-bottom-hover;
+        // margin: -($card-padding-hover);
+        // margin-bottom: -($card-padding-bottom-hover);
+
+        padding: $card-padding-hover $card-padding-hover $card-padding-bottom-hover;
+
+        top: -$card-padding-hover;
+        left: -$card-padding-hover;
         
         background-color: $card-background-color-hover;
         transform: scale($scale-factor);
