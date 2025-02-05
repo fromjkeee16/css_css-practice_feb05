@@ -97,22 +97,18 @@
         }
     }
 
-    padding: $card-padding-hover;
-    padding-bottom: 16px;
-    margin: -($card-padding-hover);
-    margin-bottom: -16px;
-
-
-    transition: transform $animation-duration,
-    padding $animation-duration,
-    margin $animation-duration;
-    transform-origin: 50% center;
+    transition: transform $animation-duration;
     
     &:hover {
         position: absolute;
         z-index: 1;
-        background-color: $card-background-color-hover;
 
+        padding: $card-padding-hover;
+        padding-bottom: 16px;
+        margin: -($card-padding-hover);
+        margin-bottom: -16px;
+        
+        background-color: $card-background-color-hover;
         transform: scale($scale-factor);
 
         .person__details-extra {
