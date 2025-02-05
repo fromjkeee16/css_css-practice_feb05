@@ -96,16 +96,6 @@
         }
     }
 
-    /* already tried: 
-    * 1. default padding - element changes its sizes - shifts
-    * 2. absolute pseudoelement background - refuses to work bcs of z-index
-    */
-
-    /* to try: 
-    * 1. compensate padding with negative margin as in MUI grid v1
-    * 2. box-sizing borderbox and overflow visible
-    */
-
     padding: $card-padding-hover;
     margin: -($card-padding-hover);
 
